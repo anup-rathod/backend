@@ -10,7 +10,6 @@ const cart = require('./routes/cart')
 const wishlist = require('./routes/wishlist')
 const product = require('./routes/product')
 const review = require('./routes/review')
-const paymentRoute = require('./routes/paymentRoute')
 const forgotPassword = require('./routes/forgotPassword')
 const AdminRoute = require('./routes/Admin/AdminAuth')
 const dotenv = require('dotenv');
@@ -54,8 +53,6 @@ app.use('/api/wishlist', wishlist)
 app.use('/api/review', review)
 
 app.use('/api/admin', AdminRoute)
-
-app.use('/api', paymentRoute)
 
 app.use('/api/password', forgotPassword)
 

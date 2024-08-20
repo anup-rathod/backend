@@ -3,7 +3,6 @@ const Cart = require("../models/Cart");
 const Wishlist = require("../models/Wishlist");
 const Review = require("../models/Review");
 const Product = require("../models/Product");
-const Payment = require("../models/Payment");
 let success = false;
 const getAllUsersInfo = async (req, res) => {
     try {
@@ -144,21 +143,6 @@ const updateProductDetails = async (req, res) => {
 
 }
 
-const userPaymentDetails = async (req, res) => {
-    const { id } = req.params;
-    const findPayment = await Payment.find({ user: id })    
-    if (findPayment) {
-        try {
-            res.send(findPayment)
-        } catch (error) {
-            return res.status(400).send(error)
-        }
-    }
-    else {
-        return res.status(400).send({ total: 0 })
-    }
-}
-
 const addProduct = async (req, res) => {
     const { name, brand, price, category, image, rating, type, author, description, gender } = req.body;
     try {
@@ -194,5 +178,5 @@ module.exports = {
     getUserCart, getUserWishlist,
     getUserReview, deleteUserReview,
     deleteUserCartItem, deleteUserWishlistItem,
-    updateProductDetails, userPaymentDetails, addProduct, deleteProduct
+    updateProductDetails, addProduct, deleteProduct
 }
